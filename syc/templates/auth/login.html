@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="login-form">
-        <form>
-            <input type="text" name="email" class="text-field" placeholder="아이디">
-            <input type="text" name="password" class="text-field" placeholder="비밀번호">
-            <input type="submit" value="로그인" class="submit-btn">
+    <div class="container">
+        <form method="post">
+            {{ form.csrf_token }}
+            {% include "form_errors.html" %}
+            <input type="text" name="username" class="text-field" placeholder="아이디" id="username"
+                   value="{{ form.username.data or '' }}">
+            <input type="password" name="password" class="form-control" placeholder="비밀번호" name="password" id="password"
+                   value="{{ form.password.data or '' }}">
+            <input type="submit" value="로그인" class="btn-login">
         </form>
 
         <div class="links">
             <a href="#">비밀번호를 잊어버리셨나요?</a>
+            <label>    |    </label>
             <a href="{{ url_for('auth.signup') }}">계정생성</a>
         </div>
     </div>
