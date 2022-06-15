@@ -1,0 +1,24 @@
+<h1>{{ store.store_name }}</h1>
+<div>
+    {{ store.s_phone }}
+    {{ store.s_address }}
+    {{ store.store_intro }}
+    {{ store.min_order }}
+    {{ store.deliver }}
+</div>
+<h5>{{ store.menu_set|length }}개의 메뉴가 있습니다.</h5>
+<div>
+    <ul>
+    {% for menu in store.menu_set %}
+        <li>{{ menu.menu_name }}</li>
+        <li>{{ menu.price }}</li>
+        <li>{{ menu.menu_content }}</li>
+    {% endfor %}
+    </ul>
+</div>
+<form action="{{ url_for('menu.create', store_id=store.id) }}" method="post">
+    <textarea name="menu_name" id="menu_name" rows="15"></textarea>
+    <text name="price" id="price"></text>
+    <textarea name="menu_content" id="menu_content" rows="15"></textarea>
+    <input type="submit" value="메뉴등록">
+</form>

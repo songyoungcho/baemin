@@ -1,0 +1,10 @@
+<!-- 가게 목록 -->
+{% if store_list %}
+    <ul>
+    {% for store in store_list %}
+       <li><a href="{{ url_for('store.detail', store_id=store.id) }}">{{ store.store_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>가게가 없습니다.</p>
+{% endif %}
