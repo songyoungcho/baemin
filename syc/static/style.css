@@ -89,9 +89,7 @@ body {
 }
 
 /* 메인 */
-.main-container{
 
-}
 
 .menu{
     width:180px;
@@ -123,15 +121,48 @@ table{
     margin: auto;
 }
 
+.store-create{
+    display: flex;
+  justify-content: center;
+}
+
 .store-btn{
     text-align:center;
     font-size:14px;
     background-color:#2AC1BC;
     color:#FFFFFF;
-    margin: 50px 100px 520px 530px;
+    margin: 50px 0 0 0;
     /*위 오 아 왼 */
     padding:10px;
     border:none;
     border-radius:5px;
     width:30%;
+}
+
+/*가게list*/
+
+.store{
+    width:1000px;
+    height:150px;
+    margin: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
+    /*위 오 아 왼 */
+    border-style: solid;
+    border-color: #ebebeb;
+    background-color:#FFFFFF;
+    box-shadow:1px 1px 10px grey;
+}
+
+.store-name{
+    font-size:20px;
+    font-weight: bold;
+}
+
+.store-deliver{
+    font-size:15px;
+}
+
+.store-intro{
+    font-size:14px;
+    font-color:#989a9c;
 }

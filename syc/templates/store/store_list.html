@@ -1,10 +1,34 @@
-<!-- 가게 목록 -->
-{% if store_list %}
-    <ul>
-    {% for store in store_list %}
-       <li><a href="{{ url_for('store.detail', store_id=store.id) }}">{{ store.store_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>가게가 없습니다.</p>
-{% endif %}
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-container">
+    <table>
+        {% if store_list %}
+        {% for store in store_list %}
+        <tr>
+            <td>
+                <div class="store" style="cursor: pointer;" onclick="location.href='{{ url_for('store.detail', store_id=store.id) }}';">
+                    <label class="store-name">{{ store.store_name }}</label>
+                    <br>
+                    <br>
+                    <label>최소주문 </label>
+                    <label class="store-deliver">{{ store.min_order }}</label>
+                    <label>원, 배달팁 </label>
+                    <label class="store-deliver">{{ store.deliver }}</label>
+                    <label>원</label>
+                    <br>
+                    <br>
+                    <label class="store-intro">{{ store.store_intro }}</label>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">텅</td>
+        </tr>
+        {% endif %}
+    </table>
+
+
+</div>
+{% endblock %}
