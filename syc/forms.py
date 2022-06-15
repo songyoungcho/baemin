@@ -14,3 +14,11 @@ class UserCreateForm(FlaskForm):
 class UserLoginForm(FlaskForm):
     username = StringField('사용자이름', validators=[DataRequired(), Length(min=3, max=25)])
     password = PasswordField('비밀번호', validators=[DataRequired()])
+
+class StoreCreateForm(FlaskForm):
+    store_name = StringField('가게이름', validators=[DataRequired(), Length(min=1, max=25)])
+    s_phone = StringField('전화번호', validators=[DataRequired(), Length(min=10, max=11)])
+    s_address = StringField('주소', validators=[DataRequired()])
+    store_intro = StringField('가게 설명', validators=[DataRequired()])
+    min_order = StringField('주문 최소 금액', validators=[DataRequired()])
+    deliver = StringField('배달료', validators=[DataRequired()])

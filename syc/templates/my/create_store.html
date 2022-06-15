@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">가게생성</h5>
+    <form method="post">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="store_name">가게 이름</label>
+            <input type="text" class="form-control" name="store_name" id="store_name"
+                   value="{{ form.store_name.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label></label>
+            <input type='radio' class="radio" name='store_type' value="한식" />한식
+            <input type='radio' class="radio" name='store_type' value="중식" />중식
+            <input type='radio' class="radio" name='store_type' value="일식" />일식
+            <br>
+            <input type='radio' class="radio" name='store_type' value="분식" />분식
+            <input type='radio' class="radio" name='store_type' value="아시안" />아시안
+            <input type='radio' class="radio" name='store_type' value="치킨" />치킨
+            <br>
+            <input type='radio' class="radio" name='store_type' value="피자" />피자
+            <input type='radio' class="radio" name='store_type' value="도시락" />도시락
+            <input type='radio' class="radio" name='store_type' value="족발" />족발
+            <br>
+            <input type='radio' class="radio" name='store_type' value="디저트" />디저트
+            <input type='radio' class="radio" name='store_type' value="패스트푸드" />패스트푸드
+            <input type='radio' class="radio" name='store_type' value="야식" />야식
+        </div>
+        <div class="mb-3">
+            <label for="s_phone">전화번호</label>
+            <input type="text" class="form-control" name="s_phone" id="s_phone"
+                   value="{{ form.s_phone.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="s_address">주소</label>
+            <input type="text" class="form-control" name="s_address" id="s_address"
+                   value="{{ form.s_address.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="store_intro">가게 정보</label>
+            <input type="text" class="form-control" name="store_intro" id="store_intro"
+                   value="{{ form.store_intro.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="min_order">최소 주문 금액</label>
+            <input type="text" class="form-control" name="min_order" id="min_order"
+                   value="{{ form.min_order.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="deliver">배달료</label>
+            <input type="text" class="form-control" name="deliver" id="deliver"
+                   value="{{ form.deliver.data or '' }}">
+        </div>
+
+    <button type="submit" class="btn-signup">생성하기</button>
+    </form>
+</div>
+{% endblock %}

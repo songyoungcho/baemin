@@ -41,6 +41,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
+            session['is_store'] = user.is_store
             _next = request.args.get('next', '')
             if _next:
                 return redirect(_next)
@@ -56,6 +57,16 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = User.query.get(user_id)
+
+@bp.before_app_request
+def load_logged_in_store():
+    is_store = session.get('is_store')
+    user_id = session.get('user_id')
+    if is_store==0:
+        g.store = User.query.get(user_id)
+
+    else:
+        g.store = None
 
 @bp.route('/logout/')
 def logout():

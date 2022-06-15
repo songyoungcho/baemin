@@ -92,6 +92,13 @@
                 <img src="https://ifh.cc/g/oWWW4V.png"/>
             </div></td>
         </tr>
+
     </table>
+    {% if g.store %}
+        <tr>
+            <button type="button" class="store-btn" onclick="location.href='{{ url_for('my.create_store') }}' ">가게 생성</button>
+        </tr>
+    {% endif %}
+
 </div>
 {% endblock %}

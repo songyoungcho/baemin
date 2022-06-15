@@ -11,6 +11,9 @@ body {
 .container-fluid{
     background-color:#2AC1BC;
 }
+.radio{
+    margin: 0 5px 0 40px;
+}
 
 .location{
     margin: 0 auto;
@@ -120,3 +123,15 @@ table{
     margin: auto;
 }
 
+.store-btn{
+    text-align:center;
+    font-size:14px;
+    background-color:#2AC1BC;
+    color:#FFFFFF;
+    margin: 50px 100px 520px 530px;
+    /*위 오 아 왼 */
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    width:30%;
+}
