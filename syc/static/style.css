@@ -5,7 +5,7 @@
 
 body {
     margin:0;
-    background-color: #e6e6e6;
+    background-color: #fafafa;
 }
 
 .container-fluid{
@@ -20,16 +20,11 @@ body {
     justify-content : right;
 }
 
-#navbarSupportedContent{
-    width:100px;
-}
-
-
 .container {
     width:300px;
     border:0;
     border-radius:5px;
-    background-color:#e6e6e6;
+    background-color:#fafafa;
     padding:20px;
     margin-top:50px;
     /*margin:0 auto;*/
@@ -89,3 +84,39 @@ body {
     font-size:12px;
     color: #9b9b9b;
 }
+
+/* 메인 */
+.main-container{
+
+}
+
+.menu{
+    width:180px;
+    height:150px;
+    margin: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
+    /*위 오 아 왼 */
+    border-style: solid;
+    border-color: #ebebeb;
+/*    border-width: thin;
+    text-align: center;*/
+}
+
+.menu-name{
+    color:#747678;
+    font-size:18px;
+}
+
+.menu-name2{
+    color:#989a9c;
+    font-size:13px;
+}
+
+.menu img{
+    margin: 25px 10px 5px 100px;
+}
+
+table{
+    margin: auto;
+}
+
