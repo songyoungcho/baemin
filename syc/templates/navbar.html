@@ -2,14 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url_for('main.main') }}"><img src="https://ifh.cc/g/21vfnM.png" width="130px" height="30%"/></a>
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% if g.user %}
             <ul class="navbar-nav">
@@ -17,6 +10,14 @@
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
                 </li>
             </ul>
+            <div class="location">
+                <label class="address" style="float:center;">{{ g.user.address }}</label>
+            </div>
+            <div class="my" style="float:right;">
+
+                <a class="nav-link" href="{{ url_for('my.mypage') }}"><img src="https://ifh.cc/g/HnK8Ga.png" width="25px" height="30%"/></a>
+
+            </div>
             {% else %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -25,8 +26,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
                 </li>
+
             </ul>
             {% endif %}
         </div>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
 </nav>

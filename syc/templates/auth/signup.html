@@ -25,6 +25,16 @@
             <input type="text" class="form-control" name="email" id="email"
                    value="{{ form.email.data or '' }}">
         </div>
+        <div class="mb-3">
+            <label for="phone">전화번호</label>
+            <input type="text" class="form-control" name="phone" id="phone"
+                   value="{{ form.phone.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" name="address" id="address"
+                   value="{{ form.address.data or '' }}">
+        </div>
         <button type="submit" class="btn-signup">생성하기</button>
     </form>
 </div>

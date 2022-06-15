@@ -12,6 +12,18 @@ body {
     background-color:#2AC1BC;
 }
 
+.location{
+    margin: 0 auto;
+}
+
+.my{
+    justify-content : right;
+}
+
+#navbarSupportedContent{
+    width:100px;
+}
+
 
 .container {
     width:300px;
@@ -36,10 +48,7 @@ body {
     width:100%;
 }
 
-.nav-item a{
-    font-size:14px;
-    color:white;
-}
+
 
 .btn-login {
     text-align:center;
