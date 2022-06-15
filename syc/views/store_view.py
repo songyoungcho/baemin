@@ -10,7 +10,7 @@ bp = Blueprint('store', __name__, url_prefix='/store')
 
 @bp.route('/list/')
 def _list():
-    store_list = Store.query.order_by(Store.store_name.desc())
+    store_list = Store.query.filter(Store.store_type.like('한식')).all()
     return render_template('store/store_list.html', store_list=store_list)
 
 
