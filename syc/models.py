@@ -25,7 +25,7 @@ class Menu(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     store_id=db.Column(db.Integer,db.ForeignKey('store.id',ondelete='CASCADE'))  #ondelete-> 질문을 삭제하면 답변도 같이 삭제됨.
     # 질문 삭제 시 question_id만 빈값이 아닌 모든 데이터 삭제하려면
-    # question = db.relationship('Question', backref=db.backref('answer_set', cascade='all, delete-orphan'))
+    store = db.relationship('Store', backref=db.backref('menu_set'))
     menu_name = db.Column(db.String(150), unique=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     menu_content=db.Column(db.Text(),nullable=True)

@@ -1,24 +1,30 @@
-<h1>{{ store.store_name }}</h1>
-<div>
-    {{ store.s_phone }}
-    {{ store.s_address }}
-    {{ store.store_intro }}
-    {{ store.min_order }}
-    {{ store.deliver }}
-</div>
-<h5>{{ store.menu_set|length }}개의 메뉴가 있습니다.</h5>
-<div>
-    <ul>
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-container">
+    <!--가게-->
+    <div class="store" style="cursor: pointer;" onclick="location.href='{{ url_for('store.detail', store_id=store.id) }}';">
+        <label class="store-name">{{ store.store_name }}</label>
+        <br>
+        <br>
+        <label>최소주문 </label>
+        <label class="store-deliver">{{ store.min_order }}</label>
+        <label>원, 배달팁 </label>
+        <label class="store-deliver">{{ store.deliver }}</label>
+        <label>원</label>
+        <br>
+        <br>
+        <label class="store-intro">{{ store.store_intro }}</label>
+    </div>
+    <br>
+    <br>
+    <!--메뉴-->
     {% for menu in store.menu_set %}
-        <li>{{ menu.menu_name }}</li>
-        <li>{{ menu.price }}</li>
-        <li>{{ menu.menu_content }}</li>
+    <div class="menu">
+        <label class="menu-name">{{ menu.menu_name }}</label>
+        <label>  </label>
+        <label class="menu-price">{{ menu.price }}</label>
+        <label>원</label>
+    </div>
     {% endfor %}
-    </ul>
 </div>
-<form action="{{ url_for('menu.create', store_id=store.id) }}" method="post">
-    <textarea name="menu_name" id="menu_name" rows="15"></textarea>
-    <text name="price" id="price"></text>
-    <textarea name="menu_content" id="menu_content" rows="15"></textarea>
-    <input type="submit" value="메뉴등록">
-</form>
+{% endblock %}

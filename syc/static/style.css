@@ -144,9 +144,10 @@ table{
 .store{
     width:1000px;
     height:150px;
-    margin: 5px 10px 5px 10px;
+    /*margin: 5px 10px 5px 10px;
     padding: 5px 5px 5px 5px;
-    /*위 오 아 왼 */
+    위 오 아 왼 */
+    margin:0 auto;
     border-style: solid;
     border-color: #ebebeb;
     background-color:#FFFFFF;
@@ -165,4 +166,19 @@ table{
 .store-intro{
     font-size:14px;
     font-color:#989a9c;
+}
+
+.menu{
+    width:1000px;
+    height:150px;
+    /*margin: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
+    위 오 아 왼 */
+    margin:0 auto;
+    border-style: solid;
+    border-color: #ebebeb;
+    background-color:#FFFFFF;
+    box-shadow:1px 1px 10px grey;
+    display: flex;
+    align-items: center;
 }
