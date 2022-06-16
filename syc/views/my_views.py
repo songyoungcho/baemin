@@ -10,9 +10,9 @@ from .auth_views import login_required
 bp = Blueprint('my', __name__, url_prefix='/my')
 
 
-@bp.route('/my_page/', methods=('GET', 'POST'))
+@bp.route('/bag/', methods=('GET', 'POST'))
 @login_required
-def my_page():
+def bag():
     return render_template('my/my.html')
 
 

@@ -48,6 +48,7 @@ body {
 
 
 
+
 .btn-login {
     text-align:center;
     font-size:14px;
@@ -142,7 +143,7 @@ table{
 /*가게list*/
 
 .store{
-    width:1000px;
+    width:800px;
     height:150px;
     /*margin: 5px 10px 5px 10px;
     padding: 5px 5px 5px 5px;
@@ -169,7 +170,7 @@ table{
 }
 
 .menu-list{
-    width:1000px;
+    width:800px;
     height:150px;
     /*margin: 5px 10px 5px 10px;*/
     padding: 5px 5px 5px 5px;
@@ -201,9 +202,23 @@ table{
     width:30%;
 }
 
+.inbag{
+    text-align:center;
+    font-size:14px;
+    background-color:#2AC1BC;
+    color:#FFFFFF;
+    /*위 오 아 왼 */
+    border:none;
+    border-radius:5px;
+    width:120px;
+    height:50px;
+    margin-left: auto;
+}
+
 .store-modify{
     display: flex;
     justify-content: center;
+    margin-left: auto;
 }
 
 .delete{
@@ -228,3 +243,25 @@ table{
     height:40px;
     margin: 0 10px 0 10px;
 }
+
+.bag{
+margin-left: 1400px;
+}
+
+.bag-list{
+    width:800px;
+    height:150px;
+    /*margin: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
+    위 오 아 왼 */
+    margin:0 auto;
+    border-style: solid;
+    border-color: #ebebeb;
+    background-color:#FFFFFF;
+}
+
+.menu-label{
+    display: table-cell;
+vertical-align: middle;
+}
+

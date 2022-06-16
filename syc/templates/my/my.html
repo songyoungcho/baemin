@@ -1,6 +1,24 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<div class="container">
+<div class="main-container">
+    <!-- flash 오류 -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <!--가게-->
+    <div style="cursor: pointer;">
+        {% for menu in g.user.menu_buyer_set %}
+        <div class="bag-list">
+            <h4>{{ menu.menu_name }}</h4>
+            <br>
+            <label>가격 : </label>
+            <label>{{ menu.price }}</label>
+        </div>
+        {% endfor %}
 
-</div>
+    </div>
+
+
 {% endblock %}

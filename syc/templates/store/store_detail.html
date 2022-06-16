@@ -38,17 +38,27 @@
     <!--메뉴-->
     {% for menu in store.menu_set %}
     <div class="menu-list">
+        <div class="menu-label">
+        <div>
         <label class="menu-name">{{ menu.menu_name }}</label>
-        <label>, </label>
+
         <label class="menu-price">{{ menu.price }}</label>
         <label>원</label>
-        <br>
-        <br>
+        </div>
+        <div>
+        <label class="menu-info">{{ menu.menu_content }}</label>
+        </div>
+            </div>
         {% if g.user == menu.user %}
         <div class="store-modify">
             <button type="button" method="post" class="modify" onclick="location.href='{{ url_for('menu.modify', menu_id=menu.id) }}'; " >수정</button>
             <button type="button" method="post" class="delete" onclick="location.href='javascript:void(0)'; " data-uri="{{ url_for('menu.delete', menu_id=menu.id) }}" >삭제</button>
         </div>
+        {%else%}
+
+        <button type="button" method="post" data-uri="{{ url_for('menu.inbag', menu_id=menu.id) }}"
+                class="inbag btn btn-sm" onclick="location.href='javascript:void(0)', store_id=store.id) }}'; " >장바구니 추가</button>
+
         {% endif %}
     </div>
     {% endfor %}
@@ -59,7 +69,10 @@
         <button type="button" method="post" class="menu-btn" onclick="location.href='{{ url_for('menu.create_menu', store_id=store.id) }}'; " >메뉴 생성</button>
     </div>
     {% endif %}
+    <div><a class="bag" href="{{ url_for('my.bag') }}"><img src="https://ifh.cc/g/DtAA4w.png" width="80px" height="50%"/></a>
 </div>
+</div>
+
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
@@ -83,6 +96,14 @@ Array.from(recommend_elements).forEach(function(element) {
     });
 });
 
+const inbag_elements = document.getElementsByClassName("inbag");
+Array.from(inbag_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
 
+        if(confirm("장바구니에 추가하시겠습니까?")) {
+                location.href = this.dataset.uri;
+        };
+    });
+});
 </script>
 {% endblock %}

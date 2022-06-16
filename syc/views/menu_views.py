@@ -55,3 +55,15 @@ def delete(menu_id):
         db.session.delete(menu)
         db.session.commit()
     return redirect(url_for('store.detail', store_id=store_id))
+
+@bp.route('/inbag/<int:menu_id>/')
+@login_required
+def inbag(menu_id):
+    _menu = Menu.query.get_or_404(menu_id)
+    store_id = _menu.store.id
+    if g.user == _menu.user:
+        flash('본인가게 메뉴는 추가할 수 없습니다')
+    else:
+        _menu.buyer.append(g.user)
+        db.session.commit()
+    return redirect(url_for('store.detail', store_id=store_id))
