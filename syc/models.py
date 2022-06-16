@@ -7,6 +7,12 @@ store_voter=db.Table(
     db.Column('store_id', db.Integer, db.ForeignKey('store.id', ondelete='CASCADE'), primary_key=True)
 )
 
+menu_buyer=db.Table(
+    'menu_buyer',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('menu_id', db.Integer, db.ForeignKey('menu.id', ondelete='CASCADE'), primary_key=True)
+)
+
 class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String(150), unique=True, nullable=False)
@@ -31,6 +37,7 @@ class Menu(db.Model):
     menu_content=db.Column(db.Text(),nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref=db.backref('menu_set'))
+    buyer = db.relationship('User', secondary=menu_buyer, backref=db.backref('menu_buyer_set'))
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

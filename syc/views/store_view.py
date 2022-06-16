@@ -82,7 +82,7 @@ def detail(store_id):
 def vote(store_id):
     _store = Store.query.get_or_404(store_id)
     if g.user == _store.user:
-        flash('본인이 작성한 글은 추천할 수 없습니다')
+        flash('본인가게는 찜 할 수 없습니다')
     else:
         _store.voter.append(g.user)
         db.session.commit()

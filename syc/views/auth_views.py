@@ -84,3 +84,17 @@ def login_required(view):
             return redirect(url_for('auth.login', next=_next))
         return view(*args, **kwargs)
     return wrapped_view
+
+@bp.route('/modify/<int:user_id>', methods=('GET', 'POST'))
+@login_required
+def modify(user_id):
+    user = User.query.get_or_404(user_id)
+    if request.method == 'POST':  # POST 요청
+        form = UserCreateForm()
+        if form.validate_on_submit():
+            form.populate_obj(user)
+            db.session.commit()
+            return redirect(url_for('main.main', user_id=user_id))
+    else:  # GET 요청
+        form = UserCreateForm(obj=user)
+    return render_template('auth/signup.html', form=form)
