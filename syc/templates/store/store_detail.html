@@ -8,8 +8,12 @@
     </div>
     {% endfor %}
     <!--가게-->
-    <div class="store" style="cursor: pointer;" onclick="location.href='{{ url_for('store.detail', store_id=store.id) }}';">
-        <label class="store-name">{{ store.store_name }}</label>
+    <div class="store" style="cursor: pointer;">
+        <label class="store-name">{{ store.store_name }}  </label>
+        <a href="javascript:void(0)" data-uri="{{ url_for('store.vote', store_id=store.id) }}"
+           class="recommend btn btn-sm"> 💖
+            <span class="badge rounded-pill bg-success">{{ store.voter|length }}</span>
+        </a>
         <br>
         <br>
         <label>최소주문 </label>
@@ -67,5 +71,18 @@ Array.from(delete_elements).forEach(function(element) {
         };
     });
 });
+
+
+const recommend_elements = document.getElementsByClassName("recommend");
+Array.from(recommend_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+
+        if(confirm("정말로 추천하시겠습니까?")) {
+                location.href = this.dataset.uri;
+        };
+    });
+});
+
+
 </script>
 {% endblock %}

@@ -1,13 +1,11 @@
 from syc import db
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    is_store = db.Column(db.String(2), default='0', nullable=False)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    phone = db.Column(db.String(120), unique=True, nullable=True)
-    address = db.Column(db.String(200), nullable=True)
+
+store_voter=db.Table(
+    'store_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('store_id', db.Integer, db.ForeignKey('store.id', ondelete='CASCADE'), primary_key=True)
+)
 
 class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,6 +18,8 @@ class Store(db.Model):
     deliver = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref=db.backref('store_set'))
+    voter = db.relationship('User', secondary=store_voter, backref=db.backref('store_voter_set'))
+
 
 class Menu(db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -31,3 +31,13 @@ class Menu(db.Model):
     menu_content=db.Column(db.Text(),nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     user = db.relationship('User', backref=db.backref('menu_set'))
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    is_store = db.Column(db.String(2), default='0', nullable=False)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    phone = db.Column(db.String(120), unique=True, nullable=True)
+    address = db.Column(db.String(200), nullable=True)
+

@@ -77,3 +77,14 @@ def detail(store_id):
     store = Store.query.get_or_404(store_id)
     return render_template('store/store_detail.html', store=store)
 
+@bp.route('/vote/<int:store_id>/')
+@login_required
+def vote(store_id):
+    _store = Store.query.get_or_404(store_id)
+    if g.user == _store.user:
+        flash('본인이 작성한 글은 추천할 수 없습니다')
+    else:
+        _store.voter.append(g.user)
+        db.session.commit()
+    return redirect(url_for('store.detail', store_id=store_id))
+
