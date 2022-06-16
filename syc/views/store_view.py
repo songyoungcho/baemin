@@ -18,3 +18,4 @@ def _list():
 def detail(store_id):
     store = Store.query.get_or_404(store_id)
     return render_template('store/store_detail.html', store=store)
+

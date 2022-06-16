@@ -21,6 +21,7 @@ def create_store():
         store = Store.query.filter_by(store_name=form.store_name.data).first()
         if not store:
             store = Store(store_name=form.store_name.data,
+                          store_type=request.form.get('store_type'),
                           s_phone=form.s_phone.data,
                           s_address=form.s_address.data,
                           store_intro=form.store_intro.data,
