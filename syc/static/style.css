@@ -251,13 +251,20 @@ margin-left: 1400px;
 .bag-list{
     width:800px;
     height:150px;
-    /*margin: 5px 10px 5px 10px;
-    padding: 5px 5px 5px 5px;
-    위 오 아 왼 */
+    /*margin: 5px 10px 5px 10px;*/
+    padding: 15px 15px 15px 15px;
+    /*위 오 아 왼 */
     margin:0 auto;
     border-style: solid;
     border-color: #ebebeb;
     background-color:#FFFFFF;
+}
+
+.hbag-list{
+    width:800px;
+    /*margin: 5px 10px 5px 10px;*/
+    /*위 오 아 왼 */
+    margin:50px auto 50px auto;
 }
 
 .menu-label{

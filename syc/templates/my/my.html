@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="main-container">
+<h5 class="hbag-list border-bottom pb-2">장바구니</h5>
     <!-- flash 오류 -->
     {% for message in get_flashed_messages() %}
     <div class="alert alert-danger" role="alert">
@@ -8,6 +9,7 @@
     </div>
     {% endfor %}
     <!--가게-->
+
     <div style="cursor: pointer;">
         {% for menu in g.user.menu_buyer_set %}
         <div class="bag-list">
@@ -19,6 +21,6 @@
         {% endfor %}
 
     </div>
-
+</div>
 
 {% endblock %}

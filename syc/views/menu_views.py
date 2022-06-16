@@ -7,7 +7,7 @@ from syc.models import User, Menu,Store
 from .auth_views import login_required
 
 bp = Blueprint('menu', __name__, url_prefix='/menu')
-
+sum=0
 
 @bp.route('/create_menu/<int:store_id>/', methods=('GET', 'POST'))
 @login_required
@@ -56,9 +56,11 @@ def delete(menu_id):
         db.session.commit()
     return redirect(url_for('store.detail', store_id=store_id))
 
-@bp.route('/inbag/<int:menu_id>/')
+@bp.route('/inbag/<int:sum>', methods=('GET', 'POST'))
+# @bp.route('/inbag/<int:menu_id>/')
 @login_required
-def inbag(menu_id):
+def inbag(menu_id,price):
+
     _menu = Menu.query.get_or_404(menu_id)
     store_id = _menu.store.id
     if g.user == _menu.user:
@@ -66,4 +68,6 @@ def inbag(menu_id):
     else:
         _menu.buyer.append(g.user)
         db.session.commit()
-    return redirect(url_for('store.detail', store_id=store_id))
+    price=Menu.query.get_or_404(price)
+    sum+=price
+    return redirect(url_for('my/my', store_id=store_id, sum=sum))
