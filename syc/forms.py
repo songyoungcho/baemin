@@ -8,7 +8,7 @@ class UserCreateForm(FlaskForm):
         DataRequired(), EqualTo('password2', '비밀번호가 일치하지 않습니다')])
     password2 = PasswordField('비밀번호확인', validators=[DataRequired()])
     email = EmailField('이메일', validators=[DataRequired(), Email()])
-    phone = StringField('전화번호', validators=[DataRequired(), Length(min=11, max=11)])
+    phone = StringField('전화번호', validators=[DataRequired()])
     address = StringField('주소', validators=[DataRequired()])
 
 class UserLoginForm(FlaskForm):
@@ -17,7 +17,7 @@ class UserLoginForm(FlaskForm):
 
 class StoreCreateForm(FlaskForm):
     store_name = StringField('가게이름', validators=[DataRequired(), Length(min=1, max=25)])
-    s_phone = StringField('전화번호', validators=[DataRequired(), Length(min=10, max=11)])
+    s_phone = StringField('전화번호', validators=[DataRequired()])
     s_address = StringField('주소', validators=[DataRequired()])
     store_intro = TextAreaField('가게 설명', validators=[DataRequired()])
     min_order = StringField('주문 최소 금액', validators=[DataRequired()])

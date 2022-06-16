@@ -40,8 +40,7 @@
         </div>
         <div class="mb-3">
             <label for="store_intro">가게 정보</label>
-            <input type="text" class="form-control" name="store_intro" id="store_intro"
-                   value="{{ form.store_intro.data or '' }}">
+            <textarea class="form-control" name="store_intro" id="store_intro" rows="10">{{ form.store_intro.data or '' }}</textarea>
         </div>
         <div class="mb-3">
             <label for="min_order">최소 주문 금액</label>
