@@ -37,3 +37,20 @@ def create_store():
         else:
             flash('이미 존재하는 가게입니다.')
     return render_template('my/create_store.html', form=form)
+
+@bp.route('/modify/<int:store_id>', methods=('GET', 'POST'))
+@login_required
+def modify(store_id):
+    store = Store.query.get_or_404(store_id)
+    if g.user != store.user:
+        flash('수정권한이 없습니다')
+        return redirect(url_for('store.detail', store_id=store_id))
+    if request.method == 'POST':  # POST 요청
+        form = StoreCreateForm()
+        if form.validate_on_submit():
+            form.populate_obj(store)
+            db.session.commit()
+            return redirect(url_for('store.detail', store_id=store_id))
+    else:  # GET 요청
+        form = StoreCreateForm(obj=store)
+    return render_template('my/create_store.html', form=form)

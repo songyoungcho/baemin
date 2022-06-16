@@ -19,7 +19,7 @@ def signup():
         user = User.query.filter_by(username=form.username.data).first()
         if not user:
             user = User(username=form.username.data,
-                        is_store = request.form.get('is_store'),
+                        is_store=request.form.get('is_store'),
                         password=generate_password_hash(form.password1.data),
                         email=form.email.data,
                         phone=form.phone.data,
@@ -31,7 +31,7 @@ def signup():
             flash('이미 존재하는 사용자입니다.')
     return render_template('auth/signup.html', form=form)
 
-@bp.route('/login/', methods=('GET', 'POST'))
+@bp.route('/login/',methods=('GET', 'POST'))
 def login():
     form = UserLoginForm()
     if request.method == 'POST' and form.validate_on_submit():

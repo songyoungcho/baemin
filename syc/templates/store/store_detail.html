@@ -15,6 +15,13 @@
         <br>
         <label class="store-intro">{{ store.store_intro }}</label>
     </div>
+    <div class="my-3">
+        {% if g.user == store.user %}
+        <div class="store-modify">
+            <button type="button" method="post" class="modify-btn" onclick="location.href='{{ url_for('my.modify', store_id=store.id) }}'; " >수정</button>
+        </div>
+        {% endif %}
+    </div>
     <br>
     <br>
     <!--메뉴-->
@@ -26,7 +33,7 @@
         <label>원</label>
     </div>
     {% endfor %}
-    {% if g.store %}
+    {% if g.user == store.user %}
     <br>
     <br>
     <div class="menu-create">

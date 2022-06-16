@@ -183,7 +183,7 @@ table{
     align-items: center;
 }
 
-/*메뉴생성*/
+/*가게 디테일*/
 .menu-create{
     display: flex;
     justify-content: center;
@@ -200,4 +200,20 @@ table{
     border:none;
     border-radius:5px;
     width:30%;
+}
+
+.store-modify{
+    display: flex;
+    justify-content: center;
+}
+
+.modify-btn{
+    text-align:center;
+    font-size:14px;
+    background-color:#2AC1BC;
+    color:#FFFFFF;
+    border:none;
+    border-radius:5px;
+    width:60px;
+    height:40px;
 }
