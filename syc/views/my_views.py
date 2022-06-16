@@ -5,16 +5,19 @@ from werkzeug.utils import redirect
 from syc import db
 from syc.forms import StoreCreateForm
 from syc.models import Store
+from .auth_views import login_required
 
 bp = Blueprint('my', __name__, url_prefix='/my')
 
 
 @bp.route('/my_page/', methods=('GET', 'POST'))
+@login_required
 def my_page():
     return render_template('my/my.html')
 
 
 @bp.route('/create_store/', methods=('GET', 'POST'))
+@login_required
 def create_store():
     form = StoreCreateForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -26,7 +29,8 @@ def create_store():
                           s_address=form.s_address.data,
                           store_intro=form.store_intro.data,
                           min_order=form.min_order.data,
-                          deliver=form.deliver.data )
+                          deliver=form.deliver.data,
+                          user=g.user )
             db.session.add(store)
             db.session.commit()
             return redirect(url_for('main.main'))

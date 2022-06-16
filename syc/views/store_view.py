@@ -4,6 +4,7 @@ from werkzeug.utils import redirect
 
 from syc import db
 from syc.models import Store, Menu, User
+from syc.views.auth_views import login_required
 
 bp = Blueprint('store', __name__, url_prefix='/store')
 

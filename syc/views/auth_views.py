@@ -5,6 +5,8 @@ from werkzeug.utils import redirect
 from syc import db
 from syc.forms import UserCreateForm, UserLoginForm
 from syc.models import User
+import functools
+
 
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -73,3 +75,12 @@ def load_logged_in_store():
 def logout():
     session.clear()
     return redirect(url_for('main.main'))
+
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(*args, **kwargs):
+        if g.user is None:
+            _next = request.url if request.method == 'GET' else ''
+            return redirect(url_for('auth.login', next=_next))
+        return view(*args, **kwargs)
+    return wrapped_view
