@@ -207,7 +207,7 @@ table{
     justify-content: center;
 }
 
-.modify-btn{
+.delete{
     text-align:center;
     font-size:14px;
     background-color:#2AC1BC;
@@ -216,4 +216,5 @@ table{
     border-radius:5px;
     width:60px;
     height:40px;
+    margin: 0 10px 0 10px;
 }

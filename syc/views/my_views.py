@@ -54,3 +54,14 @@ def modify(store_id):
     else:  # GET 요청
         form = StoreCreateForm(obj=store)
     return render_template('my/create_store.html', form=form)
+
+@bp.route('/delete/<int:store_id>')
+@login_required
+def delete(store_id):
+    store = Store.query.get_or_404(store_id)
+    if g.user != store.user:
+        flash('삭제권한이 없습니다')
+        return redirect(url_for('store.detail', store_id=store_id))
+    db.session.delete(store)
+    db.session.commit()
+    return redirect(url_for('main.main'))

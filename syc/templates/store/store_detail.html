@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="main-container">
+    <!-- flash 오류 -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
     <!--가게-->
     <div class="store" style="cursor: pointer;" onclick="location.href='{{ url_for('store.detail', store_id=store.id) }}';">
         <label class="store-name">{{ store.store_name }}</label>
@@ -18,7 +24,8 @@
     <div class="my-3">
         {% if g.user == store.user %}
         <div class="store-modify">
-            <button type="button" method="post" class="modify-btn" onclick="location.href='{{ url_for('my.modify', store_id=store.id) }}'; " >수정</button>
+            <button type="button" method="post" class="delete" onclick="location.href='{{ url_for('my.modify', store_id=store.id) }}'; " >수정</button>
+            <button type="button" method="post" class="delete" onclick="location.href='javascript:void(0)'; " data-uri="{{ url_for('my.delete', store_id=store.id) }}" >삭제</button>
         </div>
         {% endif %}
     </div>
@@ -41,4 +48,16 @@
     </div>
     {% endif %}
 </div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
 {% endblock %}
