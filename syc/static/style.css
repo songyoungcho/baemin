@@ -123,7 +123,7 @@ table{
 
 .store-create{
     display: flex;
-  justify-content: center;
+    justify-content: center;
 }
 
 .store-btn{
@@ -181,4 +181,23 @@ table{
     box-shadow:1px 1px 10px grey;
     display: flex;
     align-items: center;
+}
+
+/*메뉴생성*/
+.menu-create{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-btn{
+    text-align:center;
+    font-size:14px;
+    background-color:#2AC1BC;
+    color:#FFFFFF;
+    margin: 50px 0 0 0;
+    /*위 오 아 왼 */
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    width:30%;
 }

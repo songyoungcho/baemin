@@ -26,7 +26,7 @@ def create_store():
                           s_address=form.s_address.data,
                           store_intro=form.store_intro.data,
                           min_order=form.min_order.data,
-                          deliver=form.deliver.data, )
+                          deliver=form.deliver.data )
             db.session.add(store)
             db.session.commit()
             return redirect(url_for('main.main'))

@@ -26,5 +26,12 @@
         <label>원</label>
     </div>
     {% endfor %}
+    <br>
+    <br>
+    {% if g.store %}
+    <div class="menu-create">
+        <button type="button" method="post" class="menu-btn" onclick="location.href='{{ url_for('menu.create_menu', store_id=store.id) }}'; " >메뉴 생성</button>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

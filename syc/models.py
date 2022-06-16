@@ -18,8 +18,6 @@ class Store(db.Model):
     store_intro = db.Column(db.Text(),nullable=True)
     min_order = db.Column(db.Integer, nullable=False)
     deliver = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False, default=1)
-    user = db.relationship('User', backref=db.backref('store_set'))
 
 class Menu(db.Model):
     id=db.Column(db.Integer,primary_key=True)
@@ -29,5 +27,3 @@ class Menu(db.Model):
     menu_name = db.Column(db.String(150), unique=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     menu_content=db.Column(db.Text(),nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False, default=1)
-    user = db.relationship('User', backref=db.backref('menu_set'))

@@ -1,19 +1,25 @@
-from flask import Blueprint, url_for, request
+from flask import Blueprint, url_for, request,render_template
 from werkzeug.utils import redirect
 
 from syc import db
+from syc.forms import MenuCreateForm
 from syc.models import User, Menu,Store
 
 bp = Blueprint('menu', __name__, url_prefix='/menu')
 
 
-@bp.route('/create/<int:store_id>', methods=('POST',))
-def create(store_id):
+@bp.route('/create_menu/<int:store_id>/', methods=('GET', 'POST'))
+def create_menu(store_id):
+    form = MenuCreateForm()
     store = Store.query.get_or_404(store_id)
-    menu_name = request.form['menu_name']
-    price = request.form['price']
-    menu_content = request.form['menu_content']
-    menu = Menu(store_id=store, menu_name=menu_name, price=price, menu_content=menu_content)
-    db.session.add(menu)
-    db.session.commit()
-    return redirect(url_for('store.detail', store_id=store_id))
+    if request.method == 'POST' and form.validate_on_submit():
+        menu = Menu.query.filter_by(menu_name=form.menu_name.data).first()
+        if not menu:
+            menu = Menu(
+                        menu_name=form.menu_name.data,
+                        price=form.price.data,
+                        menu_content=form.menu_content.data )
+            store.menu_set.append(menu)
+            db.session.commit()
+            return redirect(url_for('store.detail', store_id=store_id))
+    return render_template('my/create_menu.html',  form=form)

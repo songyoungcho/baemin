@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">메뉴생성</h5>
+    <form method="post">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="menu_name">메뉴 이름</label>
+            <input type="text" class="form-control" name="menu_name" id="menu_name"
+                   value="{{ form.menu_name.data or '' }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="price">가격</label>
+            <input type="text" class="form-control" name="price" id="price"
+                   value="{{ form.price.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="menu_content">메뉴 정보</label>
+            <input type="text" class="form-control" name="menu_content" id="menu_content"
+                   value="{{ form.menu_content.data or '' }}">
+        </div>
+
+    <button type="submit" class="btn-signup">생성하기</button>
+    </form>
+</div>
+{% endblock %}
