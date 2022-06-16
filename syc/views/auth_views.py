@@ -17,6 +17,7 @@ def signup():
         user = User.query.filter_by(username=form.username.data).first()
         if not user:
             user = User(username=form.username.data,
+                        is_store = request.form.get('is_store'),
                         password=generate_password_hash(form.password1.data),
                         email=form.email.data,
                         phone=form.phone.data,
@@ -62,7 +63,7 @@ def load_logged_in_user():
 def load_logged_in_store():
     is_store = session.get('is_store')
     user_id = session.get('user_id')
-    if is_store==0:
+    if is_store ==0:
         g.store = User.query.get(user_id)
 
     else:
