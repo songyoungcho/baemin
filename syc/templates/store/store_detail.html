@@ -24,7 +24,7 @@
     <div class="my-3">
         {% if g.user == store.user %}
         <div class="store-modify">
-            <button type="button" method="post" class="delete" onclick="location.href='{{ url_for('my.modify', store_id=store.id) }}'; " >수정</button>
+            <button type="button" method="post" class="modify" onclick="location.href='{{ url_for('my.modify', store_id=store.id) }}'; " >수정</button>
             <button type="button" method="post" class="delete" onclick="location.href='javascript:void(0)'; " data-uri="{{ url_for('my.delete', store_id=store.id) }}" >삭제</button>
         </div>
         {% endif %}
@@ -38,6 +38,14 @@
         <label>  </label>
         <label class="menu-price">{{ menu.price }}</label>
         <label>원</label>
+        <br>
+        <br>
+        {% if g.user == menu.user %}
+        <div class="store-modify">
+            <button type="button" method="post" class="modify" onclick="location.href='{{ url_for('menu.modify', menu_id=menu.id) }}'; " >수정</button>
+            <button type="button" method="post" class="delete" onclick="location.href='javascript:void(0)'; " data-uri="{{ url_for('menu.delete', menu_id=menu.id) }}" >삭제</button>
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
     {% if g.user == store.user %}

@@ -218,3 +218,14 @@ table{
     height:40px;
     margin: 0 10px 0 10px;
 }
+.modify{
+    text-align:center;
+    font-size:14px;
+    background-color:#2AC1BC;
+    color:#FFFFFF;
+    border:none;
+    border-radius:5px;
+    width:60px;
+    height:40px;
+    margin: 0 10px 0 10px;
+}
