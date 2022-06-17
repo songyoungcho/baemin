@@ -41,9 +41,12 @@
         <div class="menu-label">
         <div>
         <label class="menu-name">{{ menu.menu_name }}</label>
+        <label>, </label>
 
         <label class="menu-price">{{ menu.price }}</label>
         <label>원</label>
+        <br>
+        <br>
         </div>
         <div>
         <label class="menu-info">{{ menu.menu_content }}</label>
@@ -69,7 +72,7 @@
         <button type="button" method="post" class="menu-btn" onclick="location.href='{{ url_for('menu.create_menu', store_id=store.id) }}'; " >메뉴 생성</button>
     </div>
     {% endif %}
-    <div><a class="bag" href="{{ url_for('menu.inbag') }}"><img src="https://ifh.cc/g/DtAA4w.png" width="80px" height="50%"/></a>
+    <div><a class="bag" href="{{ url_for('my.bag') }}"><img src="https://ifh.cc/g/DtAA4w.png" width="80px" height="50%"/></a>
 </div>
 </div>
 
@@ -84,12 +87,9 @@ Array.from(delete_elements).forEach(function(element) {
         };
     });
 });
-
-
 const recommend_elements = document.getElementsByClassName("recommend");
 Array.from(recommend_elements).forEach(function(element) {
     element.addEventListener('click', function() {
-
         if(confirm("정말로 추천하시겠습니까?")) {
                 location.href = this.dataset.uri;
         };

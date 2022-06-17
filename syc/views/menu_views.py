@@ -1,13 +1,13 @@
 from flask import Blueprint, url_for, request,render_template,g, flash
 from werkzeug.utils import redirect
-
 from syc import db
 from syc.forms import MenuCreateForm
 from syc.models import User, Menu,Store
 from .auth_views import login_required
 
 bp = Blueprint('menu', __name__, url_prefix='/menu')
-sum=0
+
+
 
 @bp.route('/create_menu/<int:store_id>/', methods=('GET', 'POST'))
 @login_required
@@ -43,7 +43,6 @@ def modify(menu_id):
     else:
         form = MenuCreateForm(obj=menu)
     return render_template('my/create_menu.html', form=form)
-
 @bp.route('/delete/<int:menu_id>')
 @login_required
 def delete(menu_id):
@@ -56,18 +55,18 @@ def delete(menu_id):
         db.session.commit()
     return redirect(url_for('store.detail', store_id=store_id))
 
-@bp.route('/inbag/<int:sum>', methods=('GET', 'POST'))
-# @bp.route('/inbag/<int:menu_id>/')
+
+@bp.route('/inbag/<int:menu_id>/')
 @login_required
-def inbag(menu_id,price):
+def inbag(menu_id):
 
     _menu = Menu.query.get_or_404(menu_id)
-    store_id = _menu.store.id
+    store_id=_menu.store.id
     if g.user == _menu.user:
         flash('본인가게 메뉴는 추가할 수 없습니다')
     else:
+        g.user.money = int(g.user.money) + int(_menu.price)
         _menu.buyer.append(g.user)
         db.session.commit()
-    price=Menu.query.get_or_404(price)
-    sum+=price
-    return redirect(url_for('my/my', store_id=store_id, sum=sum))
+
+    return redirect(url_for('store.detail', store_id=store_id))

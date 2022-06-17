@@ -47,4 +47,5 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(120), unique=True, nullable=True)
     address = db.Column(db.String(200), nullable=True)
+    money = db.Column(db.Integer, default=0, nullable=True)
 
